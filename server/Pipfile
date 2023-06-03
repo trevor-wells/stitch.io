@@ -10,6 +10,8 @@ flask-sqlalchemy = "*"
 flask-restful = "*"
 marshmallow = "*"
 faker = "*"
+flask-cors = "*"
+sqlalchemy-serializer = "*"
 
 [dev-packages]
 
