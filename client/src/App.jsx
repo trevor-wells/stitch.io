@@ -1,14 +1,25 @@
-import { useState } from 'react'
-import './App.css'
+import { useEffect, useState } from "react"
+import { Outlet } from "react-router-dom"
+import NavBar from "./routes/navbar/NavBar"
+import Login from "./routes/login/LogIn"
 
-function App() {
-  const [count, setCount] = useState(0)
+export default function App() {
+
+  const [user, setUser] = useState(null);
+
+  useEffect(() => {
+    fetch("/check_session").then((r) => {
+      if (r.ok)
+        r.json().then((user) => setUser(user))
+    })
+  }, [])
+
+  if (!user) return <Login onLogin={setUser} />;
 
   return (
-    <>
-      <h1>This will be the best project evar</h1>
-    </>
+      <div>
+        <NavBar />
+        <Outlet />
+      </div>
   )
 }
-
-export default App
