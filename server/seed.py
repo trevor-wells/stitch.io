@@ -5,14 +5,14 @@ from app import app
 from models import db, User, Game, Review, Library, Friend
 fake = Faker()
 
-users_list = {"username": "aspiringluddite", "avatar_url": "https://wallpapercave.com/wp/wp3666284.jpg"},\
-             {"username": "Jawn", "avatar_url": "https://media.licdn.com/dms/image/C4E03AQEjjspFv6c0xw/profile-displayphoto-shrink_400_400/0/1661197357261?e=1691020800&v=beta&t=A67ezMKATS6_3wVzkD4Nc7wf9LjOjAlwypof2s4_Xos"},\
-             {"username": "Peetur", "avatar_url": "https://media.licdn.com/dms/image/C5603AQEEUuODkSHBiQ/profile-displayphoto-shrink_800_800/0/1581614413079?e=1691020800&v=beta&t=-nRrrbSr0zIJsesbCRFRcJzCbXj2_1CoaGGSMAIbbas"},\
-             {"username": "BigMike", "avatar_url": "https://media.licdn.com/dms/image/C5603AQGYPvo9-tzGgg/profile-displayphoto-shrink_800_800/0/1661324635502?e=1691020800&v=beta&t=48YlIfj7KiGub3aYQFsFn16CYXeY4QAvIWnVIm1qqio"},\
-             {"username": "LSlayer", "avatar_url": "https://media.licdn.com/dms/image/D5635AQG9nPj03of0vA/profile-framedphoto-shrink_800_800/0/1685659316059?e=1686337200&v=beta&t=ywzRigtBkWpMzAFttlVViozkNjxVttcB09ybq1bAxlQ"},\
-             {"username": "Alelda", "avatar_url": "https://media.licdn.com/dms/image/D4D03AQGMyixTC9xBpw/profile-displayphoto-shrink_800_800/0/1677365550079?e=1691020800&v=beta&t=ZIRpCzz4OCNXfH3XS23qxx9n74QGf9I5JnXNjcerzkI"},\
-             {"username": "Angel", "avatar_url": "https://media.licdn.com/dms/image/D5635AQGV2ogspDqatA/profile-framedphoto-shrink_800_800/0/1681421347768?e=1686337200&v=beta&t=ogIsMTOt0y2gLhHyubHwo3Qh2DeSbV-QBqrXe5MZkhI"},\
-             {"username": "SterlingSilver", "avatar_url": "https://media.licdn.com/dms/image/D4E03AQEoSSLrCiBRiw/profile-displayphoto-shrink_800_800/0/1682359181635?e=1691020800&v=beta&t=9YRL-kU1x77qS0Ilo5Hkfw1g5hAjVYX5Bic6hCM476w"}
+users_list = {"username": "aspiringluddite", "password": "trevor",   "avatar_url": "https://wallpapercave.com/wp/wp3666284.jpg"},\
+             {"username": "Jawn",            "password": "john",     "avatar_url": "https://media.licdn.com/dms/image/C4E03AQEjjspFv6c0xw/profile-displayphoto-shrink_400_400/0/1661197357261?e=1691020800&v=beta&t=A67ezMKATS6_3wVzkD4Nc7wf9LjOjAlwypof2s4_Xos"},\
+             {"username": "Peetur",          "password": "peter",    "avatar_url": "https://media.licdn.com/dms/image/C5603AQEEUuODkSHBiQ/profile-displayphoto-shrink_800_800/0/1581614413079?e=1691020800&v=beta&t=-nRrrbSr0zIJsesbCRFRcJzCbXj2_1CoaGGSMAIbbas"},\
+             {"username": "BigMike",         "password": "mike",     "avatar_url": "https://media.licdn.com/dms/image/C5603AQGYPvo9-tzGgg/profile-displayphoto-shrink_800_800/0/1661324635502?e=1691020800&v=beta&t=48YlIfj7KiGub3aYQFsFn16CYXeY4QAvIWnVIm1qqio"},\
+             {"username": "LSlayer",         "password": "lauren",   "avatar_url": "https://media.licdn.com/dms/image/D5635AQG9nPj03of0vA/profile-framedphoto-shrink_800_800/0/1685659316059?e=1686337200&v=beta&t=ywzRigtBkWpMzAFttlVViozkNjxVttcB09ybq1bAxlQ"},\
+             {"username": "Alelda",          "password": "luna",     "avatar_url": "https://media.licdn.com/dms/image/D4D03AQGMyixTC9xBpw/profile-displayphoto-shrink_800_800/0/1677365550079?e=1691020800&v=beta&t=ZIRpCzz4OCNXfH3XS23qxx9n74QGf9I5JnXNjcerzkI"},\
+             {"username": "Angel",           "password": "angela",   "avatar_url": "https://media.licdn.com/dms/image/D5635AQGV2ogspDqatA/profile-framedphoto-shrink_800_800/0/1681421347768?e=1686337200&v=beta&t=ogIsMTOt0y2gLhHyubHwo3Qh2DeSbV-QBqrXe5MZkhI"},\
+             {"username": "SterlingSilver",  "password": "sterling", "avatar_url": "https://media.licdn.com/dms/image/D4E03AQEoSSLrCiBRiw/profile-displayphoto-shrink_800_800/0/1682359181635?e=1691020800&v=beta&t=9YRL-kU1x77qS0Ilo5Hkfw1g5hAjVYX5Bic6hCM476w"}
 
 games_list = {"title": "The Legend of Zelda: Tears of the Kingdom",
               "image_url": "https://images.nintendolife.com/880243a8baed2/switch-tloz-totk-artwork-01.large.jpg",
@@ -50,6 +50,7 @@ def seed_users():
             username   = user_dict["username"],
             avatar_url = user_dict["avatar_url"]
         )
+        user.password_hash = user_dict["password"]
         users.append(user)
     db.session.add_all(users)
     db.session.commit()

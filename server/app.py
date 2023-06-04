@@ -1,24 +1,58 @@
-from flask import Flask, request, make_response
-from flask_cors import CORS
-from flask_migrate import Migrate
-from flask_restful import Api, Resource
-
+from flask import request, make_response, session
+from flask_restful import Resource
+from config import app, db, api
 from models import db, User, Game, Library, Review, Friend
 
-app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///app.db'
-app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-app.json.compact = False
+class Signup(Resource):
 
-CORS(app)
-migrate = Migrate(app, db)
-db.init_app(app)
-api = Api(app)
+    def post(self):
+        data = request.get_json()
+        new_user = User(
+            username   = data["username"],
+            avatar_url = data["avatar_url"]
+        )
+        new_user.password_hash = data["password"]
+
+        try:
+            db.session.add(new_user)
+            db.session.commit()
+            session['user_id'] = new_user.id
+            return new_user.to_dict(), 201
+        except Exception as e:
+            return {'error': '422 Unprocessable Entity'}, 422
+
+class CheckSession(Resource):
+
+    def get(self):
+        if session["user_id"]:
+            user = User.query.filter(User.id == session['user_id']).first()
+            return user.to_dict(), 200
+        return {'error': '401 Unauthorized'}, 401
+    
+class Login(Resource):
+
+    def post(self):
+        data = request.get_json()
+        user = User.query.filter(User.username == data["username"]).first()
+        if user and user.authenticate(data["password"]):
+            session['user_id'] = user.id
+            return user.to_dict(), 200
+        return {'error': '401 Unauthorized'}, 401
+    
+class Logout(Resource):
+    
+    def delete(self):
+        if session["user_id"]:
+            session["user_id"] = None
+            return {}, 204
+        return {'error': '401 Unauthorized'}, 401
 
 class Index(Resource):
 
     def get(self):
-        return make_response("Stream API Index", 200)
+        if session.get('user_id'):
+            return make_response("Stream API Index", 200)
+        return {'error': '401 Unauthorized'}, 401
 
 class Users(Resource):
 
@@ -184,18 +218,22 @@ class FriendById(Resource):
         if not friend:
             return {"error": "Friend not found"}, 404
         return friend.to_dict(), 200
-  
-api.add_resource(Index, '/')
-api.add_resource(Users, '/users')
-api.add_resource(UserById, '/users/<int:id>')
-api.add_resource(Games, '/games')
-api.add_resource(GameById, '/games/<int:id>')
-api.add_resource(Reviews, '/reviews')
-api.add_resource(ReviewById, '/reviews/<int:id>')
-api.add_resource(Libraries, '/libraries')
-api.add_resource(LibraryById, '/libraries/<int:id>')
-api.add_resource(Friends, '/friends')
-api.add_resource(FriendById, '/friends/<int:id>')
+
+api.add_resource(Index,        '/')
+api.add_resource(Signup,       '/signup')
+api.add_resource(CheckSession, '/check_session')
+api.add_resource(Login,        '/login')
+api.add_resource(Logout,       '/logout') 
+api.add_resource(Users,        '/users')
+api.add_resource(Games,        '/games')
+api.add_resource(Reviews,      '/reviews')
+api.add_resource(Libraries,    '/libraries')
+api.add_resource(Friends,      '/friends')
+api.add_resource(UserById,     '/users/<int:id>')
+api.add_resource(GameById,     '/games/<int:id>')
+api.add_resource(ReviewById,   '/reviews/<int:id>')
+api.add_resource(LibraryById,  '/libraries/<int:id>')
+api.add_resource(FriendById,   '/friends/<int:id>')
 
 if __name__ == '__main__':
     app.run(port = 5555, debug = True)
