@@ -1,33 +1,29 @@
-import { Link } from "react-router-dom"
-import {useState, useEffect} from "react"
+import { NavLink } from "react-router-dom"
+import useUserStore from "../../hooks/userStore"
 
 export default function NavBar(){
 
-    const [fullscreen, setFullscreen] = useState(false)
+    const {user, setUser} = useUserStore()
 
-    useEffect(() => {
-      const handleFullScreenChange = () => {setFullscreen(!!document.fullscreenElement)}
-      document.addEventListener('fullscreenchange', handleFullScreenChange)
-    }, [])
-  
-    function toggleFullscreen(){
-      if (fullscreen) {document.exitFullscreen()}
-      else {document.documentElement.requestFullscreen()}
-    }
-  
     return(
-    <div id="nav-bar">
-        <h1 id="title">React Clone</h1>
-        <ul>
-            <Link to="/home"><li>Home</li></Link>
-            <Link to="/store"><li>Store</li></Link>
-            <Link to="/library"><li>Library</li></Link>
-        </ul>
-        <ul>
-            <Link to="/signup"><li>Sign Up</li></Link>
-            <Link to="/login"><li>Log In</li></Link>
-        </ul>
-        <button onClick={toggleFullscreen}>Fullscreen</button>
-    </div>
+        <div id="nav-bar">
+            {/* <img src="../../assets/icons/stitch_orange.png"/> */}
+            <h1 id="title">stitch.io</h1>
+            <ul className="nav">
+                <NavLink to="/"><li>Store</li></NavLink>
+                {user ? <NavLink to="/library"><li>Library</li></NavLink> : null}
+                <NavLink to="/about"><li>About</li></NavLink>
+            </ul>
+            <ul className="nav"> 
+                {user ?
+                (<>
+                    <NavLink id = "profile-nav" to="/profile">
+                        <img id="mini-avatar" src={user.avatar_url}/>
+                        <h1>{user.username}</h1>
+                    </NavLink>
+                 </>) :
+                <NavLink to="/login"><li>Log In</li></NavLink>}
+            </ul>
+        </div>
     )
 } 

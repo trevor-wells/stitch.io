@@ -1,37 +1,30 @@
 import { useState } from "react"
+import useUserStore from "../../hooks/userStore"
 
-export default function SignUpForm({ onLogin }) {
+export default function SignUpForm() {
   const [username, setUsername] = useState("")
   const [password, setPassword] = useState("")
   const [passwordConfirmation, setPasswordConfirmation] = useState("")
   const [avatarUrl, setAvatarUrl] = useState("")
-//   const [errors, setErrors] = useState([]);
-  const [isLoading, setIsLoading] = useState(false)
+
+  const {user, setUser} = useUserStore()
 
   function handleSubmit(e) {
     e.preventDefault()
-    setErrors([])
-    setIsLoading(true)
-    fetch("/signup", {
+    fetch("/api/signup", {
       method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
+      headers: {"Content-Type": "application/json"},
       body: JSON.stringify({
         username,
         password,
         password_confirmation: passwordConfirmation,
-        avatar_url: avatarUrl,
-        bio,
-      }),
-    }).then((r) => {
-      setIsLoading(false);
-      if (r.ok) {
-        r.json().then((user) => onLogin(user));
-      } else {
-        r.json().then((err) => setErrors(err.errors));
-      }
-    });
+        avatar_url: avatarUrl
+      })
+    })
+    .then((r) => {
+      if (r.ok)
+        r.json().then((user) => setUser(user))
+    })
   }
 
   return (
@@ -67,10 +60,7 @@ export default function SignUpForm({ onLogin }) {
           value={avatarUrl}
           onChange={(e) => setAvatarUrl(e.target.value)}
         />
-        <button type="submit">{isLoading ? "Loading..." : "Sign Up"}</button>
-        {/* {errors.map((err) => (
-          <Error key={err}>{err}</Error>
-        ))} */}
+        <button type="submit">Sign Up</button>
     </form>
   )
 }

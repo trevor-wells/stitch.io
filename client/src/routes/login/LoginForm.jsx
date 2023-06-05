@@ -1,53 +1,48 @@
 import { useState } from "react"
+import useUserStore from "../../hooks/userStore"
 
-export default function LoginForm({ onLogin }) {
+export default function LoginForm() {
   const [username, setUsername] = useState("")
   const [password, setPassword] = useState("")
-//   const [errors, setErrors] = useState([])
-  const [isLoading, setIsLoading] = useState(false)
 
-  function handleSubmit(e) {
-    e.preventDefault();
-    setIsLoading(true);
-    fetch("http://localhost:5555/login", {
+  const {user, setUser} = useUserStore()
+
+  function handleSubmit(event) {
+    event.preventDefault()
+    fetch("/api/login", {
       method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ username, password }),
-    }).then((r) => {
-      setIsLoading(false);
-      if (r.ok)
-        r.json().then((user) => onLogin(user))
-      else
-        r.json().then((err) => setErrors(err.errors))
-    });
+      headers: {"Content-Type": "application/json"},
+      body: JSON.stringify({ username, password })
+    })
+    .then(response => {
+      if (response.ok)
+        response.json()
+        .then((user) => setUser(user))
+    })
   }
 
   return (
     <form onSubmit={handleSubmit}>
-        <label htmlFor="username">Username</label>
-        <input
-          type="text"
-          id="username"
-          autoComplete="off"
-          value={username}
-          onChange={(e) => setUsername(e.target.value)}
-        />
-        <label htmlFor="password">Password</label>
-        <input
-          type="password"
-          id="password"
-          autoComplete="current-password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-        />
-        <button variant="fill" color="primary" type="submit">
-          {isLoading ? "Loading..." : "Login"}
-        </button>
-        {/* {errors.map((err) => (
-          <error key={err}>{err}</error>
-        ))} */}
+        <label>
+          Username
+          <input
+            type="text"
+            id="username"
+            value={username}
+            onChange={event => setUsername(event.target.value)}
+          />
+        </label>
+        <label>
+          Password
+          <input
+            type="password"
+            id="password"
+            autoComplete="current-password"
+            value={password}
+            onChange={event => setPassword(event.target.value)}
+          />
+        </label>
+        <button type="submit">Login</button>
     </form>
   )
 }
