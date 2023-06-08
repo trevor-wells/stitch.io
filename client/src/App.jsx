@@ -1,7 +1,6 @@
-import { useEffect, useState } from "react"
+import { useEffect } from "react"
 import { Outlet } from "react-router-dom"
-import NavBar from "./routes/navbar/NavBar"
-import Footer from "./routes/footer/Footer"
+import NavBar from "./components/NavBar"
 import useUserStore from './hooks/userStore'
 
 export default function App() {
@@ -20,7 +19,6 @@ export default function App() {
       <div>
         <NavBar />
         <Outlet />
-        <Footer />
       </div>
   )
 }

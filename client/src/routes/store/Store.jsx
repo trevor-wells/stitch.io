@@ -6,7 +6,7 @@ export default function Shop(){
     const [games, setGames] = useState([])
 
     useEffect(() => {
-        fetch("http://localhost:5555/games")
+        fetch("/api/games")
         .then(response => response.json())
         .then(data => setGames(data))
     }, [])
@@ -14,7 +14,7 @@ export default function Shop(){
     const gameCards = games.map(game => <GameCard key = {game.id} game = {game}/>)
 
     return(
-        <div id = 'shop-screen'>
+        <div className = "outlet">
             {gameCards}
         </div>
     )

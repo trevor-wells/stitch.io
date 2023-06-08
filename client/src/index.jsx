@@ -1,33 +1,35 @@
 import ReactDOM from 'react-dom/client'
 import { createBrowserRouter, RouterProvider, createRoutesFromElements, Route } from "react-router-dom"
 import App from './App'
-import Login from './routes/login/LogIn'
-import Shop from './routes/shop/Shop'
+import SignUp from './routes/signup/SignUp'
+import LogIn from './routes/login/Login'
+import Store from './routes/store/Store'
+import StoreGame from './routes/store/game/StoreGame'
 import Library from './routes/library/Library'
 import Profile from './routes/profile/Profile'
-import About from './routes/about/About'
+import Home from './routes/home/Home'
+import Friends from './routes/friends/Friends'
 import './index.css'
 
 const router = createBrowserRouter(createRoutesFromElements(
   <Route
     id="root"
     element={<App />}
-    // errorElement={<ErrorScreen />}
   >
     <Route
-      id="shop"
+      id="home"
       path="/"
-      element={<Shop />}
+      element={<Home />}
     />
     <Route
-      id="login"
-      path="/login"
-      element={<Login />}
+      id="store"
+      path="/store"
+      element={<Store />}
     />
     <Route
-      id="profile"
-      path="/profile"
-      element={<Profile />}
+      id="storegame"
+      path="/store/:id"
+      element={<StoreGame />}
     />
     <Route
       id="library"
@@ -35,9 +37,24 @@ const router = createBrowserRouter(createRoutesFromElements(
       element={<Library />}
     />
     <Route
-      id="about"
-      path="/about"
-      element={<About />}
+      id="signup"
+      path="/signup"
+      element={<SignUp />}
+    />
+    <Route
+      id="login"
+      path="/login"
+      element={<LogIn />}
+    />
+    <Route
+      id="profile"
+      path="/profile"
+      element={<Profile />}
+    />
+    <Route
+      id="friends"
+      path="/friends"
+      element={<Friends />}
     />
   </Route>
 ))

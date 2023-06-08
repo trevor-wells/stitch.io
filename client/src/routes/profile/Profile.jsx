@@ -21,7 +21,7 @@ export default function Profile(){
     
     if (user)
         return(
-            <div id = "profile-screen">
+            <div className = "outlet">
                 <h1>{user.username}</h1>
                 <img id="profile-image" src={user.avatar_url}/>
                 <button onClick ={logOut}>Log Out</button>

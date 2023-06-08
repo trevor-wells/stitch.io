@@ -1,28 +1,29 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --color1: #000000;
+  --color2: #3a3a3a;
+  --color3: #878787;
+  --color4: #d2d2d2;
+}
+
 * {
-  margin: 0;
-  padding: 0;
   font-family: 'Lato', Sans-Serif;
   color: white;
+  margin: 0;
+  padding: 0;
   font-size: 2vh;
+  box-sizing: border-box;
 }
 
 body {
-  background: #c7c7a6
+  background: var(--color2);
 }
 
 input {
   color: black;
-}
-.orange {
-  color: #bf5700;
-}
-
-.darkgreen {
-  color: #566e3d;
-}
-
-.lightgreen {
-  color: #c7c7a6;
 }
 
 a {
@@ -32,101 +33,11 @@ a {
 ul {
   list-style-type: none;
 }
-.game-card {
-  background: #bf5700;
-  font-size: 1vh;
-  border-radius: 5vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  align-items: center;
-  width: 30vw;
-  height: 30vw;
-  margin: 5vw;
+
+.outlet {
+  @apply absolute bottom-0 h-[94vh] w-screen left-0 flex flex-col items-center justify-around flex-wrap
 }
 
-.game-card h1 {
-  font-size: 1.5vh;
-}
-
-.game-card img {
-  width: 20vw;
-  height: 20vw;
-}
-
-.nav li {
-  display: inline-block;
-  padding: 0vw 5vw;
-}
-
-button {
-  background: #bf5700;
-  border: none;
-  padding: 0.5vh;
-  border-radius: 5px;
-}
-
-#nav-bar {
-  background: #566e3d;
-  position: fixed;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 100vw;
-  height: 6vh;
-  z-index: 100;
-}
-
-#title {
-  font-weight: 900;
-  font-size: 5vh;
-  color: white;
-  padding: 10px;
-}
-
-#profile-nav {
-  display: flex;
-  align-items: center;
-  margin: 4vh;
-}
-
-#mini-avatar {
-  width: 5vh;
-  height: 5vh;
-  margin: 1vh;
-}
-
-#profile-image {
-  width: 20vh;
-  height: 20vh;
-}
-
-#profile-screen,
-#login-screen,
-#shop-screen,
-#about-screen,
-#library-screen {
-  background: #c7c7a6;
-  position: absolute;
-  height: 88vh;
-  width: 100vw;
-  bottom: 6vh;
-  left: 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-around;
-  flex-wrap: wrap;
-}
-
-#footer {
-  background: #566e3d;
-  position: fixed;
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  width: 100vw;
-  height: 6vh;
-  z-index: 100;
-  bottom: 0;
+.nav {
+  @apply text-[2vh] inline-block ml-[2vw]
 }
