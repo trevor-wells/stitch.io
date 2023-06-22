@@ -1,8 +1,8 @@
 export default function Home(){
     return(
-        <div className = "outlet">
-            <h1>Welcome to stitch.io!</h1>
-            <p>A site where you can upload your own indie games and share them with others!</p>
+        <div className = " w-screen h-screen flex items-center justify-center text-center">
+            <h1>Welcome to stitch.io!<br/>A site where you can upload your own indie games and share them with others</h1>
+            <p></p>
         </div>
     )
 }

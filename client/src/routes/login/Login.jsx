@@ -31,21 +31,16 @@ export default function Login() {
   return (
     <div className = "outlet">
       <form className = "bg-[--color3] w-[30vw] h-[50vh] flex items-center flex-wrap justify-center shadow-sm rounded-md" onSubmit={handleSubmit}>
-        <label className="text-3xl text-center text-white mb-10 pt-2 rounded-t-lg font-bold">
-          Username
           <input
-            className = "w-[25vw] h-[6vh]"
+            className = "w-[26vw] h-[6vh] rounded-sm"
             placeholder = "Username"
             type="text"
             id="username"
             value={username}
             onChange={event => setUsername(event.target.value)}
           />
-        </label>
-        <label className="text-3xl text-center text-white mb-10 pt-2 rounded-t-lg font-bold">
-          Password
           <input
-            className = "w-[25vw] h-[6vh]"
+            className = "w-[26vw] h-[6vh] rounded-sm"
             placeholder = "Password"
             type="password"
             id="password"
@@ -53,7 +48,6 @@ export default function Login() {
             value={password}
             onChange={event => setPassword(event.target.value)}
           />
-        </label>
         <button type="submit" className="btn btn-primary rounded-full text-white py-2 px-4 bg-[--color2] mb-4">Login</button>
         <p>
             Don't have an account? &nbsp;

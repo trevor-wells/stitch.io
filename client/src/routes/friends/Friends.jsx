@@ -14,7 +14,7 @@ export default function Friends(){
             </div>
             <div className = "fixed w-[20vw] h-[88vh] bg-[--color4] left-0 bottom-0">
             </div>
-            <div className = "fixed w-[80vw] h-[94vh] right-0 bottom-0 items-center justify-center z-10 bg-[--color1]">
+            <div className = "fixed w-[80vw] h-[94vh] right-0 bottom-0 text-center justify-center z-10 bg-[--color3] items-end">
                 <h1>Click a friend to start chatting!</h1>
             </div>
         </div>

@@ -37,7 +37,7 @@ export default function SignUp() {
     <div className = "outlet">
         <form className = "bg-[--color3] w-[30vw] h-[50vh] flex items-center flex-wrap justify-center shadow-sm rounded-md" onSubmit={handleSubmit}>
             <input
-                className = "w-[25vw] h-[6vh] rounded-sm"
+                className = "w-[26vw] h-[6vh] rounded-sm"
                 type="text"
                 id="username"
                 placeholder="Username"
@@ -46,7 +46,7 @@ export default function SignUp() {
                 onChange={(e) => setUsername(e.target.value)}
             />
             <input
-                className = "w-[25vw] h-[6vh] rounded-sm"
+                className = "w-[26vw] h-[6vh] rounded-sm"
                 type="password"
                 id="password"
                 placeholder="Password"
@@ -55,7 +55,7 @@ export default function SignUp() {
                 autoComplete="current-password"
             />
             <input
-                className = "w-[25vw] h-[6vh] rounded-sm"
+                className = "w-[26vw] h-[6vh] rounded-sm"
                 type="password"
                 id="password_confirmation"
                 placeholder="Password Confirmation"
@@ -64,7 +64,7 @@ export default function SignUp() {
                 autoComplete="current-password"
             />
             <input
-                className = "w-[25vw] h-[6vh] rounded-sm"
+                className = "w-[26vw] h-[6vh] rounded-sm"
                 type="text"
                 id="avatarUrl"
                 placeholder="Avatar URL"
