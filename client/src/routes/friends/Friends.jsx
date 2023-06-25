@@ -1,22 +1,31 @@
+import { useState, useEffect } from "react"
 import useUserStore from "../../hooks/userStore"
+import FriendList from "./FriendList"
+import Chat from "./Chat"
 
 export default function Friends(){
 
     const {user} = useUserStore()
 
+    const [friends, setFriends] = useState([])
+    const [friendToDisplay, setFriendToDisplay] = useState(null)
+
+    useEffect(() => {
+        fetch("/api/friends")
+        .then(response => response.json())
+        .then(data => setFriends(data))
+    }, [])
+
+    function handleListItemClick(friend){
+        setFriendToDisplay(friend)
+    }
+
+    
+
     return(
-        <div className = "outlet">
-            <div className = "fixed flex items-center justify-between bg-[--color2] left-0 w-[20vw] h-[6vh] top-[6vh] z-10 ">
-                <img className = "w-[7vh] h-[7vh] p-[1vh]" src={user.avatar_url}/>
-                <h1 className = 'text-black'>{user.username}</h1>
-                <img className = "w-[7vh] h-[7vh] p-[1vw]" src = "public/search_icon.png"/>
-                <img className = "w-[7vh] h-[7vh] p-[1vw]" src = "public/add_friend_icon.png"/>
-            </div>
-            <div className = "fixed w-[20vw] h-[88vh] bg-[--color4] left-0 bottom-0">
-            </div>
-            <div className = "fixed w-[80vw] h-[94vh] right-0 bottom-0 text-center justify-center z-10 bg-[--color3] items-end">
-                <h1>Click a friend to start chatting!</h1>
-            </div>
-        </div>
+        <>
+            <FriendList friends={friends} onListItemClick={handleListItemClick}/>
+            <Chat friend={friendToDisplay}/>
+        </>
     )
 }

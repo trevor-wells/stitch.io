@@ -19,9 +19,9 @@ export default function NavBar(){
     }
 
     return(
-        <div className =  'h-[6vh] fixed flex items-center w-screen bg-black'>
+        <div className =  'z-[100] h-[6vh] fixed flex items-center w-screen bg-black'>
             <NavLink className = "flex items-center ml-[1vw]" to="/">
-                    <img className = "w-[5vh] h-[5vh]" src="public/logo_white.png"/>
+                    <img className = "w-[5vh] h-[5vh]" src="/logo_white.png"/>
                     <h1 className = "font-black p-2 text-[5vh]">stitch.io</h1>
             </NavLink>
             <ul>

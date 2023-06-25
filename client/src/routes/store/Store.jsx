@@ -7,7 +7,7 @@ export default function Shop(){
 
     useEffect(() => {
         fetch("/api/games")
-        .then(response => response.json())
+        .then(r => r.json())
         .then(data => setGames(data))
     }, [])
 

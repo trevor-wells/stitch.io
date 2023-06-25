@@ -23,12 +23,12 @@ const router = createBrowserRouter(createRoutesFromElements(
     />
     <Route
       id="store"
-      path="/store"
+      exact path="/store"
       element={<Store />}
     />
     <Route
       id="storegame"
-      path="/store/:id"
+      exact path="/store/:id"
       element={<StoreGame />}
     />
     <Route

@@ -1,13 +1,14 @@
 import { useEffect } from "react"
 import { useNavigate } from "react-router-dom"
 import useUserStore from "../../hooks/userStore"
+import ProfileCard from "./ProfileCard"
 
 export default function Profile(){
 
     const {user, setUser} = useUserStore()
     const navigate = useNavigate()
 
-    function logOut(){
+    function LogOut(){
         fetch("/api/logout", {
             method: "DELETE"
         })
@@ -22,9 +23,7 @@ export default function Profile(){
     if (user)
         return(
             <div className = "outlet">
-                <h1>{user.username}</h1>
-                <img id="profile-image" src={user.avatar_url}/>
-                <button onClick ={logOut}>Log Out</button>
-            </div>
+                <ProfileCard user={user} LogOut={LogOut}/>
+            </div> 
         )
 }
