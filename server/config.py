@@ -5,6 +5,16 @@ from flask_migrate import Migrate
 from flask_restful import Api
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy import MetaData
+from dotenv import load_dotenv
+load_dotenv() #reading variables from .env file
+
+#load_dotenv() needs to be run before importing cloudinary
+import cloudinary
+config = cloudinary.config(secure=True)
+
+#log the configuration
+print("**** set up and configure the SDK:****\n",
+      config.cloud_name, "\n", config.api_key, "\n")
 
 app = Flask(__name__)
 app.secret_key = b'Y\xf1Xz\x00\xad|eQ\x80t \xca\x1a\x10K'

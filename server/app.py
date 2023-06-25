@@ -147,7 +147,7 @@ class Reviews(Resource):
                 title       = data["title"],
                 description = data["description"],
                 user_id     = data["user_id"],
-                game_id     = data["game_id"],
+                game_id     = data["game_id"]
             )
             db.session.add(new_review)
             db.session.commit()
