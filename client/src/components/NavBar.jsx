@@ -22,12 +22,12 @@ export default function NavBar(){
         <div className =  'z-[100] h-[6vh] fixed flex items-center w-screen bg-black'>
             <NavLink className = "flex items-center ml-[1vw]" to="/">
                     <img className = "w-[5vh] h-[5vh]" src="/logo_white.png"/>
-                    <h1 className = "font-black p-2 text-[5vh]">stitch.io</h1>
+                    <h1 className = "font-black pl-[0.5vw] text-[5vh]">stitch.io</h1>
             </NavLink>
             <ul>
-                <NavLink to="/store"><li className = "nav">Store</li></NavLink>
-                {user ? <NavLink to="/library"><li className = "nav">Library</li></NavLink> : null}
-                {user && <NavLink to="/friends"><li className = "nav">Friends</li></NavLink>}
+                <NavLink className = "nav" to="/store"><li>Store</li></NavLink>
+                {user ? <NavLink className = "nav" to="/library"><li >Library</li></NavLink> : null}
+                {user && <NavLink className = "nav" to="/friends"><li>Friends</li></NavLink>}
                 <li className = "nav" onClick={toggleFullscreen}>Fullscreen</li>  
             </ul>
             <ul className = "fixed top-[.5vh] right-[5vh]"> 

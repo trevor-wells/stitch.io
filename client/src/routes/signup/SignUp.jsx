@@ -1,13 +1,13 @@
 import { useState, useEffect } from "react"
-import { Link } from "react-router-dom"
+import { Link, useNavigate} from "react-router-dom"
 import useUserStore from "../../hooks/userStore"
 
 export default function SignUp() {
+  const navigate = useNavigate()
   const [username, setUsername] = useState("")
   const [password, setPassword] = useState("")
   const [passwordConfirmation, setPasswordConfirmation] = useState("")
   const [avatarUrl, setAvatarUrl] = useState("")
-
   const {user, setUser} = useUserStore()
 
   useEffect(() => {
@@ -64,18 +64,18 @@ export default function SignUp() {
               onChange={(e) => setPasswordConfirmation(e.target.value)}
               autoComplete="current-password"
           />
-          <label className="ml-[1.6vw] text-[2vh]">Email address</label>
+          <label className="ml-[1.6vw] text-[2vh]">Avatar URL</label>
           <input
               className = "ml-[1.6vw] mb-[2vh] w-[26vw] h-[4vh] rounded-sm pl-[1vh]"
               type="text"
-              id="email"
+              id="avatar_url"
               value={avatarUrl}
               onChange={(e) => setAvatarUrl(e.target.value)}
           />
-          <p className = "flex items-center">
+          <span className = "flex items-center">
             <button className="px-[2vh] py-[1vh] ml-[1.6vw] rounded-sm bg-[--color2]" type="submit">Sign Up</button>
             <p className = "text-[1.5vh]"> &nbsp;&nbsp; Already have an account? &nbsp;<Link className = "underline text-[1.5vh]" to="/login">Log In</Link></p>
-          </p>
+          </span>
         </form>
     </div>
   )

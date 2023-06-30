@@ -9,12 +9,12 @@ users_list = {"username": "aspiringluddite", "password": "trevor",   "avatar_url
              {"username": "jawn",            "password": "john",     "avatar_url": "https://media.licdn.com/dms/image/C4E03AQEjjspFv6c0xw/profile-displayphoto-shrink_400_400/0/1661197357261?e=1691020800&v=beta&t=A67ezMKATS6_3wVzkD4Nc7wf9LjOjAlwypof2s4_Xos"},\
              {"username": "peetur",          "password": "peter",    "avatar_url": "https://media.licdn.com/dms/image/C5603AQEEUuODkSHBiQ/profile-displayphoto-shrink_800_800/0/1581614413079?e=1691020800&v=beta&t=-nRrrbSr0zIJsesbCRFRcJzCbXj2_1CoaGGSMAIbbas"},\
              {"username": "bigmike",         "password": "mike",     "avatar_url": "https://media.licdn.com/dms/image/C5603AQGYPvo9-tzGgg/profile-displayphoto-shrink_800_800/0/1661324635502?e=1691020800&v=beta&t=48YlIfj7KiGub3aYQFsFn16CYXeY4QAvIWnVIm1qqio"},\
-             {"username": "slayerofman",     "password": "lauren",   "avatar_url": "https://media.licdn.com/dms/image/D5635AQG9nPj03of0vA/profile-framedphoto-shrink_800_800/0/1685659316059?e=1688263200&v=beta&t=YQso4wMUH8BnZdkldm2tWI9kJwQBOVz9A8EDXPO43UA"},\
+             {"username": "lslayer",         "password": "lauren",   "avatar_url": "https://media.licdn.com/dms/image/D5635AQG9nPj03of0vA/profile-framedphoto-shrink_800_800/0/1685659316059?e=1688263200&v=beta&t=YQso4wMUH8BnZdkldm2tWI9kJwQBOVz9A8EDXPO43UA"},\
              {"username": "alelda",          "password": "luna",     "avatar_url": "https://media.licdn.com/dms/image/D4D03AQGMyixTC9xBpw/profile-displayphoto-shrink_800_800/0/1677365550079?e=1691020800&v=beta&t=ZIRpCzz4OCNXfH3XS23qxx9n74QGf9I5JnXNjcerzkI"},\
              {"username": "angeldust",       "password": "angela",   "avatar_url": "https://media.licdn.com/dms/image/D5635AQGV2ogspDqatA/profile-framedphoto-shrink_400_400/0/1681421347768?e=1688263200&v=beta&t=rS1712cH67fcZC0Xs5dFxidi0C_diYpRSg4FqHvwUTU"},\
              {"username": "sterlingsilver",  "password": "sterling", "avatar_url": "https://media.licdn.com/dms/image/D4E03AQEoSSLrCiBRiw/profile-displayphoto-shrink_800_800/0/1682359181635?e=1691020800&v=beta&t=9YRL-kU1x77qS0Ilo5Hkfw1g5hAjVYX5Bic6hCM476w"}
 
-games_list = {"title": "The Legend of Zelda: Tears of the Kingdom",
+games_list = {"title": "Tears of the Kingdom",
               "image_url": "https://images.nintendolife.com/880243a8baed2/switch-tloz-totk-artwork-01.large.jpg",
               "description": "In this sequel to the Legend of Zelda: Breath of the Wild game, you’ll decide your own path through the sprawling landscapes of Hyrule and the mysterious islands floating in the vast skies above. Can you harness the power of Link’s new abilities to fight back against the malevolent forces that threaten the kingdom?",
               "genre": "Action-Adventure",
@@ -37,7 +37,13 @@ games_list = {"title": "The Legend of Zelda: Tears of the Kingdom",
               "description": "In a hostile, post-pandemic world, Joel and Ellie, brought together by desperate circumstances, must rely on each other to survive a brutal journey across what remains of the United States.",
               "genre": "Action-Adventure",
               "developer": "Naughty Dog",
-              "release_date": "June 14, 2013"}
+              "release_date": "June 14, 2013"},\
+             {"title": "Flappy Bird",
+              "image_url": "https://i.pinimg.com/originals/a0/10/96/a01096406d987a54c14d498a6b420960.png",
+              "description": "An arcade-style game in which the player controls the bird Faby, which moves persistently to the right. The player is tasked with navigating Faby through pairs of pipes that have equally sized gaps placed at random heights.",
+              "genre": "Arcade",
+              "developer": "Dong Nguyen",
+              "release_date": "May 24, 2013"}
 
 friendship_statuses = ["Pending", "Accepted", "Rejected"]
 

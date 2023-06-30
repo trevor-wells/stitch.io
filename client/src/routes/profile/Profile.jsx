@@ -23,7 +23,7 @@ export default function Profile(){
     if (user)
         return(
             <div className = "outlet">
-                <ProfileCard user={user} LogOut={LogOut}/>
+                <ProfileCard user={user} setUser={setUser} LogOut={LogOut}/>
             </div> 
         )
 }

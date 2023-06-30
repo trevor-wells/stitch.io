@@ -1,9 +1,13 @@
+import React from "react"
 import { useState, useEffect } from "react"
-import GameCard from "./GameCard"
+import GameCardContainer from "./GameCardContainer"
+// import StoreFilter from "./StoreFilter"
+
 
 export default function Shop(){
 
     const [games, setGames] = useState([])
+    const [search, setSearch] = React.useState("")
 
     useEffect(() => {
         fetch("/api/games")
@@ -11,11 +15,12 @@ export default function Shop(){
         .then(data => setGames(data))
     }, [])
 
-    const gameCards = games.map(game => <GameCard key = {game.id} game = {game}/>)
+    const gamesToDisplay = games.filter(game => game.title.toLowerCase().includes(search.toLowerCase()))
 
     return(
-        <div className = "outlet">
-            {gameCards}
-        </div>
+        <>
+            {/* <StoreFilter /> */}
+            <GameCardContainer search={search} setSearch={setSearch} games={gamesToDisplay}/>
+        </>
     )
 }

@@ -9,11 +9,6 @@ export default function Login() {
   const [username, setUsername] = useState("")
   const [password, setPassword] = useState("")
 
-  useEffect(() => {
-    if (user)
-    navigate("/")
-  }, [user])
-
   function handleSubmit(event) {
     event.preventDefault()
     fetch("/api/login", {
@@ -28,11 +23,16 @@ export default function Login() {
     })
   }
 
+  useEffect(() => {
+    if (user)
+    navigate("/")
+  }, [user])
+
   return (
     <div className = "outlet">
       <form className = "shadow-lg bg-[--color3] w-[30vw] h-[35vh] rounded-md mb-[7vh]" onSubmit={handleSubmit}>
         <h1 className = "text-[1.7vw] mb-[2vh] mt-[2vh] ml-[1.6vw] block text-left font-semibold pr-[5vw]">Login to your stitch.io account</h1>
-          <label className = " ml-[1.6vw] text-[2vh]" htmlFor="username">Username or email</label>
+          <label className = " ml-[1.6vw] text-[2vh]" htmlFor="username">Username</label>
           <input
             className = "ml-[1.6vw] mb-[3vh] w-[26vw] h-[4vh] rounded-sm pl-[1vh]"
             type="text"
@@ -49,10 +49,12 @@ export default function Login() {
             value={password}
             onChange={event => setPassword(event.target.value)}
           />
-          <p className = "flex items-center">
+          <span className = "flex items-center">
             <button type="submit" className="px-[2vh] py-[1vh] ml-[1.6vw] rounded-sm bg-[--color2]">Login</button>
-            <p className="text-[1.5vh]">&nbsp;&nbsp;&nbsp; Or  &nbsp;&nbsp;<Link className="text-[1.5vh] underline" to="/signup">Create account</Link> &nbsp; • &nbsp; <Link className="text-[1.5vh] underline" to="/recover">Forgot password</Link></p>
-          </p>
+            <p className="text-[1.5vh]">&nbsp;&nbsp;&nbsp; Or  &nbsp;&nbsp;<Link className="text-[1.5vh] underline" to="/signup">Create account</Link> &nbsp;
+            {/* • &nbsp; <Link className="text-[1.5vh] underline" to="/recover">Forgot password</Link> */}
+            </p>
+          </span>
       </form>
     </div>
   )

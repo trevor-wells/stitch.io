@@ -42,10 +42,10 @@ export default function ReviewContainer({game}){
     const reviewList = myReviews.map(review => <Review key={review.id} review={review} />) 
     
     return(
-        <div className="flex flex-wrap">
-            <h1 className="text-[3vh]">Reviews</h1>
+        <div className="flex flex-wrap self-start">
+            <h1 className="text-[3vh] mt-[4vh]">Reviews</h1>
             <div className="break"/>
-            {!isReviewing && <button className="px-[2vh] py-[1vh] rounded-sm bg-[--color2]" onClick={() => setIsReviewing(prevState => !prevState)}>Leave a Review</button>}
+            {(!isReviewing && user) && <button className="px-[2vh] py-[1vh] rounded-sm bg-[--color2]" onClick={() => setIsReviewing(prevState => !prevState)}>Leave a Review</button>}
             <div className="break"/>
             {isReviewing &&
             <form className="flex flex-wrap">

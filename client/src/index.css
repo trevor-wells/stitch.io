@@ -51,7 +51,7 @@ input[type="range"] {
 }
 
 input[type="range"]::-webkit-slider-runnable-track {
-  background: var(--color1);
+  background: var(--color4);
   height: 0.5rem;
 }
 
