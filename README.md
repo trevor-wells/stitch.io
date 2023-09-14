@@ -1,53 +1,79 @@
-# stitch.io
+# **stitch.io**
 
-## Description
-A simplified clone of game-distributing sites steam and itch.io. This site hosts all games I have created during my time at Flatiron School.
+a simplified clone of game-distribution sites steam and itch.io.
 
-## Table of Contents
+## **installation**
 
-## Demo
-If you have a live version or a demo of your project, include a link to it along with any necessary login credentials or instructions.
+to set up the app on your local machine, navigate to the project folder in your terminal and type:
 
-## Technologies Used
-Python, Flask, SQLAlchemy, React, Vite, Zustand, React Router, Marshmallow
+```
+cd server
+pipenv install
+pipenv shell
+python seed.py
+python app.py
+```
 
-## Features
-stitch.io g
-Features: Highlight the key features of your game-distributing site. Explain what makes it unique or different from existing platforms.
+open another terminal window, navigate to the project folder, then type:
 
- ## Installation
-step-by-step instructions on how to set up and run your project locally. Include any dependencies, system requirements, or configuration files needed.
+```
+cd client
+npm install
+npm run dev
+o
+```
+## **folder structure**
+```
+.
+├── client
+│   ├── node_modules
+│   ├── public
+│   └── src
+│       ├── components
+│       ├── hooks
+│       └── routes
+│           ├── friends
+│           ├── home
+│           ├── library
+│           ├── login
+│           ├── profile
+│           ├── signup
+│           └── store
+│               └── game
+└── server
+    ├── assets
+    ├── instance
+    └── ...
 
- ## Usage
-Usage: Explain how users can interact with your game-distributing site. Include instructions on how to create an account, upload games, browse the site, purchase games, and any other relevant actions.
+```
 
-## Architecture
-Architecture: Describe the overall architecture of your project, including the frontend and backend components. You can include diagrams, if helpful.
+## **technologies used**
+• vite         (4.2.0)
 
+• react        (18.2.0)
 
-## Database Schema
-Database Schema: If you're using a database, provide information about the database schema and how the different entities are related.
+• react router (6.4.4)
 
-## API Documentation
-API Documentation: If your project includes an API, document its endpoints, parameters, request/response formats, and authentication methods.
+• python
 
+• flask
 
-## Deployment
-Deployment: Explain how your project can be deployed to a production environment. Include any specific configuration or setup required for deployment.
+• zustand
 
+• marshmallow
 
-## Testing
-Testing: If you have implemented tests, provide instructions on how to run them. Mention the testing frameworks and methodologies used.
+• tailwind css (3.3.1)
 
+## **features**
+*insert key features here (client-side routing, talk about the logic used, typed library, etc)*
 
-## Contributing
-Contribution Guidelines: If you welcome contributions from other developers, provide guidelines on how they can contribute to your project, including steps for setting up a development environment and submitting pull requests.
+## **demo / walkthrough**
+*insert link to loom video with thumbnail here*
 
-## Roadmap
-Roadmap: Outline your future plans and any upcoming features or enhancements you plan to implement.
+## **license**
+stitch.io is available under the mit license. see the license.txt file for more info.
 
-## License
-License: Specify the license under which your project is released. Choose an appropriate open-source license or create a custom license if needed.
+## **contact information**
+[github](https://github.com/trevor-wells)
 
-## Contact
-Contact Information: Provide a way for users to reach out to you with questions, bug reports, or feedback. Include your email address or a link to your preferred communication platform.
+[linkedin](https://www.linkedin.com/in/trevor-e-wells/)
